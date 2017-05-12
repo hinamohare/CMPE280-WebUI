@@ -1,15 +1,14 @@
 from model import User
 from flask import session, json
 from bson.json_util import dumps
-from flask import Flask, send_file
 
 """Error Handler"""
 
 def clarity_error(error):
     """
-
-    :param error:
-    :return:
+    
+    :param error: 
+    :return: 
     """
 
     return {
@@ -18,10 +17,10 @@ def clarity_error(error):
 
 def get_user(email, password):
     """
-
-    :param email:
-    :param password:
-    :return:
+    
+    :param email: 
+    :param password: 
+    :return: 
     """
     user = User()
     userInfo = user.get_user_details(email, password)
@@ -35,13 +34,13 @@ def get_user(email, password):
 
 def create_user(first_name, last_name, email, password, contactno):
     """
-
-    :param first_name:
-    :param last_name:
-    :param email:
-    :param password:
-    :param contactno:
-    :return:
+    
+    :param first_name: 
+    :param last_name: 
+    :param email: 
+    :param password: 
+    :param contactno: 
+    :return: 
     """
     user = User()
     userInfo = user.get_user_details(email, password)
@@ -57,7 +56,7 @@ def create_user(first_name, last_name, email, password, contactno):
 def signout_user():
     """
 
-    :return:
+    :return: 
     """
     # remove the username from the session if it is there
     session.pop('user_id', None)
