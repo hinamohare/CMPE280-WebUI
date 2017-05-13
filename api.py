@@ -61,3 +61,15 @@ def signout_user():
     # remove the username from the session if it is there
     session.pop('user_id', None)
     return
+
+def create_art(title, category, description, user, img_name):
+    """
+    extract and convert the image to smaller size and then insert it into database, also insert the id of inserted images into users art array
+    :param title: 
+    :param category: 
+    :param description: 
+    :param by: 
+    :param img_name: 
+    :return: 
+    """
+    pass
