@@ -1,27 +1,26 @@
 'use strict';   // See note about 'use strict'; below
 
-var myApp = angular.module('myApp', [
- 'ngRoute',
-]);
+$(document).ready(function(){
+    $("#s").click(function()
+    {
+        $(".IndexPage").hide();
+        $(".SignUpPage .container").show();
+    });
+    $("#l").click(function()
+    {
+        $(".IndexPage").hide();
+        $(".SignInPage .container").show();
+    });
 
-myApp.config(['$routeProvider',
-     function($routeProvider) {
-         $routeProvider.
-             when('/', {
-                 templateUrl: '/static/partials/index.html',
-             }).
-             when('/signup', {
-                 templateUrl: '/static/partials/signup.html',
-             }).
-             when('/signin', {
-                 templateUrl: '/static/partials/signin.html',
-             }).
-             when('/upload', {
-                 templateUrl: '/static/partials/upload.html',
-             })
-             otherwise({
-                 redirectTo: '/'
-             })
+    $(".SignUpPage #loginbtn").click(function()
+    {
+        $(".SignUpPage .container").hide();
+        $(".SignInPage .container").show();
+    });
+     $(".SignInPage #-signupbtn").click(function()
+    {
+        $(".SignInPage .container").hide();
+        $(".SignUpPage .container").show();
+    });
 
-             ;
-    }]);
+});

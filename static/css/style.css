@@ -1,3 +1,23 @@
+ form
+{
+
+  border-style:solid;
+  border-color:#737171;
+  margin: 10%;
+  padding: 10px;
+}
+
+.glyphicon {
+    right: 0.5em;
+    font-size: 1em;
+}
+
+.SignUpPage .container, .SignInPage .container
+{
+display: none;
+}
+
+
 
 div#fixedheader {
 	top:0px;
