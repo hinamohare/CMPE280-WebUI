@@ -1,6 +1,10 @@
+import base64
 import os
 import uuid
+from io import BytesIO
 
+import pymongo
+from PIL import Image
 from flask import Flask, render_template, request, json, jsonify, flash
 from werkzeug.utils import secure_filename
 
@@ -46,7 +50,7 @@ def upload():
 
 @app.route("/")
 def index():
-    return render_template("upload.html")
+    return render_template("index.html")
 
 
 
@@ -100,20 +104,49 @@ def signout():
 @app.route("/v1/art/", methods = ['POST'])
 def insertArt():
     try:
-        new_art = json.loads(request.data)
-        title = new_art.get("Title")
-        category = new_art.get("Category")
-        description = new_art.get("Description")
-        by = new_art.get("By")
-        img_name = new_art.get("ImageName")
-        result = api.create_art(title, category, description, by, img_name)
-        if result is not None:
-            return jsonify({"status": "success", "result": result}),200
-        else:
-            return jsonify({"status":"error", "msg": "Can't insert artwork"}),404
+        if request.method == 'POST':
+            new_art = json.loads(request.data)
+            title = new_art.get("Title")
+            category = new_art.get("Category")
+            description = new_art.get("Description")
+            #by = new_art.get("By")
+            img_name = new_art.get("ImageName")
+            result = api.create_art(title, category, description,
+                                    )
+            if result is not None:
+                return jsonify({"status": "success", "result": result}),200
+            else:
+                return jsonify({"status":"error", "msg": "Can't insert artwork"}),404
+
     except Exception as e:
         print "Signup failed "+str(e)
         return jsonify({"status":"error","msg": "create art failed"}), 500
+
+@app.route('/v1/art/<art_id>', methods = ['GET'])
+def retrieveArt(art_id):
+    result = api.retrieve_single_art(art_id)
+    return jsonify({"result":result})
+
+
+# dbconnection = pymongo.MongoClient()
+# dbname = dbconnection.cmpe280
+
+
+
+@app.route('/v1/arts/', methods = ['GET'])
+def retrieve_image():
+    result = api.retrieve_allArts()
+    return jsonify({"result":result})
+    # data = dbname.art.find_one()
+    # data1 = json.loads(dumps(data))
+    # img = data1['Image']
+    # #img1 = img['Image']
+    # decode=img.decode()
+    # i = Image.open(decode)
+    # return i
+    # img_tag = '<img alt="sample" src="data:image/png;base64,{0}">'.format(decode)
+    # description_tag = "<p>Title : "+data1["Title"]+" <br>User : "+data1["User"] + img_tag
+    # return description_tag
     
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port = 5000, debug = True)
