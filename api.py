@@ -1,6 +1,9 @@
-from model import User
+from StringIO import StringIO
+from bson import Binary
+from model import User, Art
 from flask import session, json
 from bson.json_util import dumps
+
 
 """Error Handler"""
 
@@ -62,7 +65,7 @@ def signout_user():
     session.pop('user_id', None)
     return
 
-def create_art(title, category, description, user, img_name):
+def create_art(title, category, description, img_name):
     """
     extract and convert the image to smaller size and then insert it into database, also insert the id of inserted images into users art array
     :param title: 
@@ -72,4 +75,19 @@ def create_art(title, category, description, user, img_name):
     :param img_name: 
     :return: 
     """
-    pass
+    user = session['user_id']
+    image = "./data/images/"+img_name
+    #binary_image_file = Binary(image_file)  # pymongo libary
+    artObj = Art()
+    art_id = artObj.insert_art(title, category, description, user, image)
+    return  art_id
+
+def retrieve_single_art(art_id):
+    artObj = Art()
+    art = artObj.get_single_art_details(art_id)
+    return art
+
+def retrieve_allArts():
+    artsObj = Art()
+    artsList = artsObj.get_allArt_details()
+    return artsList

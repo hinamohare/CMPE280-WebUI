@@ -1,0 +1,50 @@
+
+{% extends "layout.html" -%}
+{% block content -%}
+{% include "partials/upload.html" %}
+{%- endblock content %}
+
+<script>
+    $(document).ready(function(){
+        $("#imageupload").on('change', function() {
+            sendFile(this.files[0]);
+        });
+
+        function sendFile(file) {
+            console.log("send file called");
+            var fd = new FormData(document.getElementById("imageupload"));
+            $.ajax({
+                type: 'post',
+                url: '/uploadimg',
+                data: fd,
+                success: function (data) {
+                    // do something
+                    var imagename = data.result.imagename;
+                    console.log(fname);
+                    $('#demo').html(imagename);
+                },
+                 error: function (data) {
+                    // do something
+
+                    $('#demo').html('error');
+                },
+                <!--xhrFields: {-->
+                    <!--// add listener to XMLHTTPRequest object directly for progress (jquery doesn't have this yet)-->
+                    <!--onprogress: function (progress) {-->
+                        <!--// calculate upload progress-->
+                        <!--var percentage = Math.floor((progress.total / progress.totalSize) * 100);-->
+                        <!--// log upload progress to console-->
+                        <!--console.log('progress', percentage);-->
+                        <!--if (percentage === 100) {-->
+                            <!--console.log('DONE!');-->
+                        <!--}-->
+                    <!--}-->
+                <!--},-->
+                processData: false,
+                contentType: false
+            });
+            return false;
+        }
+    });
+</script>
+

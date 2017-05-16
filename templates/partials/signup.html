@@ -1,0 +1,54 @@
+<div class ="container ">
+
+    <div id="signup">
+        <div class="row">
+            <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-sm-offset-3 col-md- col-sm-offset-3 col-lg-6">
+                <h4>Sign up</h4>
+                <form action="signup" method="post" >
+                    <div class="form-group">
+                       <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input required type="text" id="FirstName" class="form-control" name="FirstName"
+                                    placeholder="Enter First Name" /><br>
+                                </div><br>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input required type="text" id="LastName" class="form-control" name="LastName"
+                                    placeholder="Enter Last Name" /><br>
+                                </div><br>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+                                    <input type="text" id="ContactNo" class="form-control" name="ContactNo"
+                                    placeholder="Enter Contact Number" /><br>
+                                </div><br>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                    <input required type="email" id ="Email" class="form-control" name="Email"
+                                    placeholder="Enter Email ID" /><br>
+                                </div><br>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                    <input required type="password" id="Password" class="form-control" name="Password"
+                                    placeholder="Enter Password" /><br>
+                                </div><br>
+                        <button id="signupbtn"  class="btn  btn-success btn-block">Sign up</button><br>
+                        <button id="cancelbtn" class="btn btn-danger btn-block">Cancel</button><br>
+                        <strong>Already a member?</strong>
+                        <a id="loginbtn"  href="signin" class="btn btn-info btn-block">Sign in</a><br>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    $(document).ready(function(){
+
+    $('#signupbtn1').on('click',function(){
+    alert('asdf');
+    });
+    });
+
+</script>

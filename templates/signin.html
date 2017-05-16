@@ -1,0 +1,34 @@
+{% extends "layout.html" -%}
+{% block content -%}
+{% include "partials/signin.html" %}
+{%- endblock content %}
+
+<script>
+    $(document).ready(function(){
+
+    $("#loginbutton").on("click",function()
+    {
+        console.log("HI");
+        var requestData = {
+                        Email: $("#_Email").val(),// < note use of 'this' here
+                        Password: $("#_Password").val()
+                            };
+                   console.log(requestData);
+        $.ajax(
+        {
+            type: "POST",
+            url: "/v1/signin/",
+            contentType: 'application/json; charset=utf-8',
+            dataType:"application/json",
+            data: JSON.stringify(requestData),
+            success: function(result) {
+                console.log(result);
+            },
+            error: function(result) {
+                console.log("Error");
+            }
+        });
+        });
+
+    });
+</script>

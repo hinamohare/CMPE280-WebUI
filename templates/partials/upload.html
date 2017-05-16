@@ -1,0 +1,32 @@
+<div class="container ">
+ <div class="row">
+            <div class="">
+
+          <form method="post" action="upload" enctype=multipart/form-data>
+            <input type="hidden" id="userid" value="123">
+            <div class="form-group">
+              <label for="Title">Title</label>
+              <input  type="text" class="form-control w3-input w3-border" name="Title" id="Title" aria-describedby="emailHelp" placeholder="Enter title of ArtWork" required>
+              <!--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+            </div>
+            <div class="form-group">
+              <label for="Category">Category</label>
+              <input type="text" name="Category" class="form-control w3-input w3-border" id="Category" placeholder="Category" required>
+            </div>
+            <div class="form-group">
+              <label for="exampleTextarea">Description</label>
+              <textarea name="Description" class="form-control w3-input w3-border" id="exampleTextarea" rows="3" required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="Image">File input</label>
+              <input type="file"  class="form-control-file w3-input w3-border" name="image" id="image" aria-describedby="fileHelp" required>
+              <!--<small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>-->
+            </div>
+
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+
+ </div> </div>
